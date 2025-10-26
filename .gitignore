@@ -1,0 +1,11 @@
+Database/*.db
+*.sqlite3
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.env
+.vscode/
+.idea/
