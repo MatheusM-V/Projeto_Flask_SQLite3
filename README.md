@@ -79,7 +79,7 @@ Projeto_Flask_SQLite3/
 ## 🔐 Login Padrão (Exemplo)
 
 Usuário: **admin**  
-Senha: **1234**
+Senha: **admin**
 
 > ⚠️ Este usuário é apenas um exemplo local — altere antes de usar em ambiente real.
 
@@ -87,7 +87,7 @@ Senha: **1234**
 
 ## 💡 Possíveis Melhorias Futuras
 
-- Criptografia de senhas com `werkzeug.security`
+- Criptografia de senhas com `werkzeug.security` (Feito)
 - Interface visual com **Bootstrap** ou **Tailwind CSS**
 - Listagem de usuários e painel administrativo
 - Deploy gratuito no **Render** ou **Railway**
@@ -102,4 +102,4 @@ Senha: **1234**
 
 ---
 
-Esse README foi feito pelo chat gpt pois, preguiça.
+Esse README foi feito pelo ChatGPT pois, preguiça.

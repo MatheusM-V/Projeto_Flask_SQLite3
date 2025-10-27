@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     senha TEXT NOT NULL
 )''')
 
-cursor.execute('INSERT OR IGNORE INTO usuarios (usuario, senha) VALUES (?, ?)', ("admin", "1234567890"))
+cursor.execute('INSERT OR IGNORE INTO usuarios (usuario, senha) VALUES (?, ?)', ("admin", "admin"))
 
 conn.commit()
 conn.close()

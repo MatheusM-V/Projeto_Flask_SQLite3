@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 from pathlib import Path
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = '9308aa751b8cae2711c8afa870a167b3f07ac806d9ee31b3b87a61247f49c00a'
@@ -28,9 +29,12 @@ def criar_usuario(usuario, senha):
         return False, "O nome de usuário deve ter pelo menos 3 caracteres."
     if not (8 <= len(senha) <= 12):
         return False, "A senha deve ter entre 8 e 12 caracteres."
+    
     try:
+        senha_hash = generate_password_hash(senha)
+
         with sqlite3.connect(caminho_banco) as conn:
-            conn.execute('INSERT INTO usuarios (usuario, senha) VALUES (?, ?)', (usuario, senha))
+            conn.execute('INSERT INTO usuarios (usuario, senha) VALUES (?, ?)', (usuario, senha_hash))
             return True, "Usuário criado com sucesso."
     except sqlite3.IntegrityError:
         return False, "O nome de usuário já existe."
@@ -53,7 +57,7 @@ def login():
         senha = request.form.get('senha', '').strip()
        
         linha = buscar_usuarios(usuario)
-        if linha and linha['senha'] == senha:
+        if linha and check_password_hash(linha['senha'], senha):
             session['USUARIO'] = linha['usuario']
             return redirect(url_for('portal'))
         else:
