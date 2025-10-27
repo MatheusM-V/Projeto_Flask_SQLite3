@@ -1,4 +1,4 @@
-from flask import blueprints, render_template, request, redirect, url_for, session
+from flask import blueprints, render_template, request, redirect, url_for, session, flash
 from werkzeug.security import check_password_hash
 from .db import buscar_usuarios, criar_usuario
 
@@ -13,8 +13,10 @@ def login():
         linha = buscar_usuarios(usuario)
         if linha and check_password_hash(linha['senha'], senha):
             session['USUARIO'] = linha['usuario']
+            flash("Login realizado com sucesso.", "success")
             return redirect(url_for('main.portal'))
         else:
+            flash("Credenciais inválidas. Tente novamente.", "error")
             return render_template('login.html', erro="Credenciais inválidas. Tente novamente.")
     
     return render_template('login.html')
@@ -31,8 +33,10 @@ def cadastro():
         OK, msg = criar_usuario(usuario, senha)
 
         if OK:
-            return redirect(url_for('auth.login', msg="Usuário criado com sucesso. Faça login."))
+            flash("Usuário criado com sucesso. Faça login.", "success")
+            return redirect(url_for('auth.login'))
         else:
+            flash(msg, "error")
             return render_template('cadastro.html', erro=msg, usuario=usuario)
     
     return render_template('cadastro.html')
