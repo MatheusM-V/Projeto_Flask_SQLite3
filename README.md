@@ -22,21 +22,24 @@
 Projeto_Flask_SQLite3/
 ├── run.py
 ├── app/
-│   ├── __init__.py          # Cria o app e registra os Blueprints
-│   ├── db.py                # Funções do banco (buscar/criar usuário)
-│   ├── auth.py              # Rotas de autenticação (login/cadastro/logout)
-│   ├── routes.py            # Rotas principais (portal e páginas)
-│   └── templates/
-│       ├── login.html
-│       ├── cadastro.html
-│       ├── portal.html
-│       └── portais/
-│           ├── pagina1.html
-│           ├── pagina2.html
-│           └── pagina3.html
+│   ├── __init__.py          # create_app + registro dos blueprints
+│   ├── db.py                # camada de acesso ao SQLite
+│   ├── auth.py              # rotas de autenticação (login/cadastro/logout)
+│   ├── routes.py            # rotas principais (/, /portal, páginas)
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── login.html
+│   │   ├── cadastro.html
+│   │   ├── portal.html
+│   │   └── portais/
+│   │       ├── pagina1.html
+│   │       ├── pagina2.html
+│   │       └── pagina3.html
+│   └── static/
+│       └── style.css
 ├── Database/
 │   ├── init_db.py
-│   └── usuarios.db
+│   └── usuarios.db          # ignorado pelo git
 ├── requirements.txt
 ├── .gitignore
 └── README.md
