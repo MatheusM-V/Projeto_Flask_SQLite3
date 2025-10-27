@@ -103,8 +103,8 @@ Senha: **admin**
 
 - Criptografia de senhas com `werkzeug.security` ✅  
 - Estrutura modular com **Blueprints** ✅  
-- Mensagens visuais com `flash()` 🔜  
-- Interface moderna com **Bootstrap** ou **Tailwind CSS** 🔜  
+- Mensagens visuais com `flash()` ✅  
+- Interface moderna com **Bootstrap** ou **Tailwind CSS** ✅  (usei um CSS global basico, por enquanto)
 - Deploy gratuito no **Render** ou **Railway** 🔜
 
 ---
@@ -117,4 +117,4 @@ Senha: **admin**
 
 ---
 
-Esse README foi feito pelo ChatGPT, porque... preguiça, mas agora tá bonito demais 😎
+Esse README foi feito pelo ChatGPT, porque... preguiça.
