@@ -13,10 +13,10 @@
   <div class="box">
     <h2>Bem-vindo, {{ usuario }}</h2>
     <p>Escolha um dos sites abaixo:</p>
-    <a href="{{ url_for('pagina1') }}" target="_blank">Pagina1</a>
-    <a href="{{ url_for('pagina2') }}" target="_blank">pagina2</a>
-    <a href="{{ url_for('pagina3') }}" target="_blank">pagina3</a> 
-    <p><a href="{{ url_for('logout') }}">Sair</a></p>
+    <a href="{{ url_for('main.pagina1') }}" target="_blank">Pagina1</a>
+    <a href="{{ url_for('main.pagina2') }}" target="_blank">pagina2</a>
+    <a href="{{ url_for('main.pagina3') }}" target="_blank">pagina3</a> 
+    <p><a href="{{ url_for('auth.logout') }}">Sair</a></p>
   </div>
 </body>
 </html>

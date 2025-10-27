@@ -1,16 +1,17 @@
 # 🧠 Projeto Flask + SQLite3
 
-> Projeto que eu fiz para estudar **Flask** e **SQLite3** — um simples sistema de cadastro e login totalmente funcional.
+> Projeto que eu fiz para estudar **Flask** e **SQLite3** — um simples sistema de cadastro e login totalmente funcional, agora com estrutura modular e criptografia de senhas.
 
 ---
 
 ## 🚀 Funcionalidades
 
 - Cadastro de novos usuários com validação de dados  
-- Login seguro com sessões do Flask  
-- Logout automático  
+- Login seguro com **hash de senha (PBKDF2 + SHA256)** ✅  
+- Sessões seguras e logout  
 - Banco de dados **SQLite3** local  
-- Estrutura organizada em módulos (`Database/`, `templates/`, etc.)  
+- Estrutura modular usando **Blueprints**  
+- Código organizado em camadas (`app/`, `Database/`, etc.)  
 - Interface simples e intuitiva
 
 ---
@@ -19,57 +20,67 @@
 
 ```
 Projeto_Flask_SQLite3/
-├── app.py
+├── run.py
+├── app/
+│   ├── __init__.py          # Cria o app e registra os Blueprints
+│   ├── db.py                # Funções do banco (buscar/criar usuário)
+│   ├── auth.py              # Rotas de autenticação (login/cadastro/logout)
+│   ├── routes.py            # Rotas principais (portal e páginas)
+│   └── templates/
+│       ├── login.html
+│       ├── cadastro.html
+│       ├── portal.html
+│       └── portais/
+│           ├── pagina1.html
+│           ├── pagina2.html
+│           └── pagina3.html
 ├── Database/
 │   ├── init_db.py
 │   └── usuarios.db
-├── templates/
-│   ├── login.html
-│   ├── cadastro.html
-│   └── portal.html
-├── static/
-│   └── (CSS / imagens futuras)
-└── .gitignore
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 
 ---
 
 ## 🧰 Tecnologias Utilizadas
 
-- [Python 3.11+](https://www.python.org/)
-- [Flask](https://flask.palletsprojects.com/)
-- [SQLite3](https://www.sqlite.org/)
+- [Python 3.11+](https://www.python.org/)  
+- [Flask](https://flask.palletsprojects.com/)  
+- [SQLite3](https://www.sqlite.org/)  
+- [Werkzeug Security](https://werkzeug.palletsprojects.com/) (para hash de senha)
 
 ---
 
 ## ⚙️ Como Rodar Localmente
 
-1. **Clone o repositório:**
+1. **Clone o repositório:**  
    ```bash
    git clone https://github.com/MatheusM-V/Projeto_Flask_SQLite3.git
    cd Projeto_Flask_SQLite3
    ```
 
-2. **Instale as dependências:**
+2. **Instale as dependências:**  
    ```bash
-   pip install flask
+   pip install -r requirements.txt
    ```
 
-3. **Crie o banco de dados:**
+3. **Crie o banco de dados:**  
    ```bash
    python Database/init_db.py
    ```
 
-4. **Execute o servidor:**
+4. **Execute o servidor:**  
    ```bash
-   python app.py
+   python run.py
    ```
 
-5. **Acesse no navegador:**
+5. **Acesse no navegador:**  
    ```
    http://localhost:5000
    ```
-   ou na sua rede local:
+   ou na sua rede local:  
    ```
    http://NOME-DO-PC:5000
    ```
@@ -79,27 +90,28 @@ Projeto_Flask_SQLite3/
 ## 🔐 Login Padrão (Exemplo)
 
 Usuário: **admin**  
-Senha: **admin**
+Senha: **admin**  
 
-> ⚠️ Este usuário é apenas um exemplo local — altere antes de usar em ambiente real.
+> ⚠️ Este usuário é apenas um exemplo local — altere ou remova antes de usar em ambiente real.
 
 ---
 
-## 💡 Possíveis Melhorias Futuras
+## 💡 Melhorias Feitas / Futuras
 
-- Criptografia de senhas com `werkzeug.security` (Feito)
-- Interface visual com **Bootstrap** ou **Tailwind CSS**
-- Listagem de usuários e painel administrativo
-- Deploy gratuito no **Render** ou **Railway**
+- Criptografia de senhas com `werkzeug.security` ✅  
+- Estrutura modular com **Blueprints** ✅  
+- Mensagens visuais com `flash()` 🔜  
+- Interface moderna com **Bootstrap** ou **Tailwind CSS** 🔜  
+- Deploy gratuito no **Render** ou **Railway** 🔜
 
 ---
 
 ## 🧑‍💻 Autor
 
 **Matheus Vitorino**  
-📚 Desenvolvido para fins de estudo e prática de Flask + SQLite3  
+📚 Desenvolvido para fins de estudo e prática com Flask + SQLite3  
 🔗 [GitHub - Matheus Vitorino](https://github.com/MatheusM-V)
 
 ---
 
-Esse README foi feito pelo ChatGPT pois, preguiça.
+Esse README foi feito pelo ChatGPT, porque... preguiça, mas agora tá bonito demais 😎
